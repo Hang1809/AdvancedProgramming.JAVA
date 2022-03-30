@@ -17,8 +17,8 @@ public class Main {
             switch (choice) {
                 case 1:
                     System.out.println("1. Draw the rectangle");
-                    for (int i = 3; i >= 1; i--) {
-                        for (int j = 1; j <= 7 ; j++) {
+                    for (int i = 4; i >= 1; i--) {
+                        for (int j = 0; j <= 8 ; j++) {
                             System.out.print("* ");
                         }
                         System.out.println("");
@@ -39,13 +39,13 @@ public class Main {
                 case 3:
                     System.out.println("3. Draw the isosceles triangle");
                     for (int i = 0; i <= 6; i++) {
-                        for (int k = 7-i; k >= 1; k--) {
+                        for (int space = 7-i; space >= 1; space --) {
                             System.out.print(" ");
                         }
                         for (int j = 0; j < i*2 +1; j ++) {
                             System.out.print("*");
                         }
-                        System.out.println("");
+                       System.out.println("");
                     }
 
                 case 0 :
