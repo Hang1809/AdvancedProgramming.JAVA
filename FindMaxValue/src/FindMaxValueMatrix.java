@@ -23,6 +23,13 @@ public class FindMaxValueMatrix {
             }
         }
 
+        System.out.println("-------*-------\n The Matrix is : ");
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                System.out.print(Array[i][j] + "\t");
+            }
+            System.out.println("\n");
+        }
 
         int max = Array[0][0];
 
