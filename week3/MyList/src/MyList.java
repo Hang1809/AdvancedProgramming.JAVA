@@ -12,6 +12,10 @@ public class MyList<E> {
         elements = new Object[DEFAULT_CAPACITY];
     }
 
+    public MyList(int capacity){
+        elements = new Object[capacity];
+    }
+
     private void ensureCapa() {
         int newSize = elements.length * 2;
         elements = Arrays.copyOf(elements, newSize);
@@ -38,14 +42,7 @@ public class MyList<E> {
         elements[size++] = e;
     }
 
-    //public boolean add(E element)
-//    public  boolean add(E e) {
-//        if (size >= elements.length) {
-//            System.arraycopy(elements, 0, elements, 0, elements.length);
-//        }
-//        elements[size++] = e;
-//        return true;
-//    }
+
 
     @Override
     public String toString() {
@@ -63,7 +60,7 @@ public class MyList<E> {
         if (index >= size || index < 0) {
             System.out.println("Index invalid");
         } else {
-            System.arraycopy(elements, index, elements, index, size - 1);
+            System.arraycopy(elements, index+1, elements, index, size - 1);
 //            for (int i = index; i < elements.length -1; i++){
 //                elements[i] = elements[i+1];
 //                elements[size -1] = null;
@@ -71,8 +68,23 @@ public class MyList<E> {
 //            return elements;
 //            size --;
         }
-        elements[index] = null;
-        size--;
+        elements[--size] = null;
+    }
+
+    public int size(){
+        return size;
+    }
+
+
+
+    public Object clone(){
+        Object newArr[]= new Object[size];
+        for (int i=0; i<size; i++){
+            newArr[i] = elements[i];
+        }
+        return "MyListClone{"+
+                "size=" + size +
+                ", elements = " + Arrays.toString(newArr)+'}';
     }
 
 
@@ -82,5 +94,33 @@ public class MyList<E> {
             throw new IndexOutOfBoundsException();
         }
         return (E) elements[index];
+    }
+
+    public boolean contains(E e) {
+        for (int i = 0; i < size; i++)
+            if (e.equals(elements[i]))
+                return true;
+        return false;
+    }
+
+    public int indexOf(E e) {
+        int indexOf = -1;
+        for (int i = 0; i < size; i++) {
+            if (elements[i] == e) {
+                indexOf = i;
+            }
+        }
+        return indexOf;
+    }
+
+    public Object clear(){
+        for (int i=0; i<size; i++){
+            elements[i]=null;
+        }
+        size = 0;
+        return "MyList{" +
+                "size=" + size +
+                ", elements=" + Arrays.toString(elements) +
+                '}';
     }
 }
